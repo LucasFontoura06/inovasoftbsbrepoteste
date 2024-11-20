@@ -8,7 +8,12 @@ import Navigation from "./componentes/Navigation";
 function App() {
   return (
     <Router>
-      <div style={{ background: '#0d1117' }}>
+      <div style={{ 
+        background: '#0d1117',
+        margin: 0,
+        padding: 0,
+        minHeight: '100vh'
+      }}>
         <Navigation />
         <HeroSection />
         <AboutUs />

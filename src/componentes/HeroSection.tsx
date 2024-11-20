@@ -7,7 +7,7 @@ const Hero = styled.section`
   align-items: center;
   justify-content: center;
   min-height: 90vh;
-  padding: 2rem;
+  padding: 3rem;
   background: linear-gradient(
     135deg,
     rgba(15, 23, 42, 0.9) 0%,
@@ -66,30 +66,42 @@ const ButtonGroup = styled.div`
 `;
 
 const Button = styled(Link)`
-  padding: 1rem 2.5rem;
-  border-radius: 8px;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  font-size: 1rem;
   transition: all 0.3s ease;
+  display: inline-block;
+  min-width: 160px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
   
-  &.primary {
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+  }
+  
+  &:first-child {
     background: #00f7ff;
-    color: #000;
+    color: #0f172a;
     
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 247, 255, 0.2);
+      background: #00e1e9;
     }
   }
   
-  &.secondary {
-    background: transparent;
+  &:last-child {
     border: 1px solid #00f7ff;
     color: #00f7ff;
     
     &:hover {
       background: rgba(0, 247, 255, 0.1);
-      transform: translateY(-2px);
     }
   }
 `;
