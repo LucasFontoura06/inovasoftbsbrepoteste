@@ -44,6 +44,7 @@ const ProductCard = styled.div`
   }
 `;
 
+
 export default function Products() {
   return (
     <ProductSection id="products">
