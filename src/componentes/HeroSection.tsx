@@ -8,8 +8,34 @@ const Hero = styled.section`
   justify-content: center;
   min-height: 90vh;
   padding: 2rem;
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.9) 0%,
+    rgba(30, 41, 59, 0.9) 100%
+  );
   position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(0, 247, 255, 0.1) 0%,
+        transparent 50%
+      );
+    z-index: 0;
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const Title = styled.h1`
@@ -71,7 +97,7 @@ const Button = styled(Link)`
 export default function HeroSection() {
   return (
     <Hero>
-      <Title>Inovação Digital</Title>
+      <Title>InovaSoft BSB</Title>
       <Description>
         Transformando o futuro através de soluções tecnológicas inteligentes e inovadoras
       </Description>

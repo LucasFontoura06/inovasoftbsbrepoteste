@@ -3,7 +3,29 @@ import { FaSearch, FaClock, FaInfoCircle } from "react-icons/fa";
 
 const ProductSection = styled.section`
   padding: 6rem 2rem;
-  background-color: #0a0a0a;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.95) 0%,
+    rgba(30, 41, 59, 0.95) 100%
+  );
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(0, 247, 255, 0.03) 50%,
+        transparent 100%
+      );
+  }
 `;
 
 const ProductGrid = styled.div`
@@ -16,14 +38,33 @@ const ProductGrid = styled.div`
 
 const ProductCard = styled.div`
   background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 2rem;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 247, 255, 0.2),
+      transparent
+    );
+  }
 
   &:hover {
     transform: translateY(-5px);
     border-color: #00f7ff;
+    box-shadow: 0 8px 32px rgba(0, 247, 255, 0.1);
   }
 
   .icon {
