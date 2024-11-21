@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FaSearch, FaClock, FaInfoCircle } from "react-icons/fa";
+import { FaSearch, FaClock, FaInfoCircle, FaExternalLinkAlt } from "react-icons/fa";
 
 const ProductSection = styled.section`
   padding: 6rem 2rem;
@@ -80,26 +80,101 @@ const ProductCard = styled.div`
   }
 `;
 
+const SectionTitle = styled.div`
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 1;
+
+  h2 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #888;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+`;
+
+const StatusBadge = styled.span<{ active?: boolean }>`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: ${props => props.active ? 'rgba(0, 255, 0, 0.1)' : 'rgba(255, 200, 0, 0.1)'};
+  color: ${props => props.active ? '#00ff00' : '#ffcc00'};
+  border: 1px solid ${props => props.active ? 'rgba(0, 255, 0, 0.2)' : 'rgba(255, 200, 0, 0.2)'};
+`;
+
+const ProductLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  background: rgba(0, 247, 255, 0.1);
+  color: #00f7ff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 247, 255, 0.2);
+
+  &:hover {
+    background: rgba(0, 247, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+`;
 
 export default function Products() {
   return (
     <ProductSection id="products">
+      <SectionTitle>
+        <h2>Nossos Softwares</h2>
+        <p>Conheça algumas das soluções inovadoras que desenvolvemos para transformar a vida das pessoas.</p>
+      </SectionTitle>
       <ProductGrid>
         <ProductCard>
+          <StatusBadge active>Ativo</StatusBadge>
           <FaSearch className="icon" />
           <h3>SmartFinds</h3>
           <p>Busca inteligente para suas necessidades</p>
+          <ProductLink href="https://smartfinds.com.br" target="_blank">
+            Acessar <FaExternalLinkAlt size={12} />
+          </ProductLink>
         </ProductCard>
+        
         <ProductCard>
+          <StatusBadge>Em breve</StatusBadge>
           <FaClock className="icon" />
           <h3>Hora Certa</h3>
           <p>Gestão de tempo eficiente</p>
+          <ProductLink className="disabled">
+            Em desenvolvimento <FaExternalLinkAlt size={12} />
+          </ProductLink>
         </ProductCard>
-        <ProductCard>
+        
+        {/* <ProductCard>
+          <StatusBadge active>Ativo</StatusBadge>
           <FaInfoCircle className="icon" />
           <h3>About Us</h3>
           <p>Conheça nossa história</p>
-        </ProductCard>
+          <ProductLink href="https://about.empresa.com.br" target="_blank">
+            Acessar <FaExternalLinkAlt size={12} />
+          </ProductLink>
+        </ProductCard> */}
       </ProductGrid>
     </ProductSection>
   );

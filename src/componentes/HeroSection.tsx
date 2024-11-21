@@ -6,8 +6,10 @@ const Hero = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 90vh;
-  padding: 3rem;
+  min-height: 100vh;
+  padding: 0 2rem;
+  text-align: center;
+  width: 100%;
   background: linear-gradient(
     135deg,
     rgba(15, 23, 42, 0.9) 0%,
@@ -58,7 +60,7 @@ const Hero = styled.section`
 `;
 
 const Title = styled.h1`
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-size: clamp(3rem, 10vw, 5rem);
   font-weight: 700;
   background: linear-gradient(90deg, #fff 0%, #00f7ff 100%);
   -webkit-background-clip: text;
@@ -68,9 +70,9 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
   text-align: center;
   color: #888;
 `;
@@ -78,9 +80,13 @@ const Description = styled.p`
 const ButtonGroup = styled.div`
   display: flex;
   gap: 1.5rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
 
   @media (max-width: 768px) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 
