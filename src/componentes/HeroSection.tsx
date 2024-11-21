@@ -1,63 +1,61 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../contexts/translation';
 
+const gradientAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
 const Hero = styled.section`
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 0 2rem;
-  text-align: center;
-  width: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(15, 23, 42, 0.9) 0%,
-    rgba(30, 41, 59, 0.9) 100%
-  );
+  align-items: center;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
-    top: -25%;
-    left: -25%;
-    right: -25%;
-    bottom: -25%;
-    background: 
-      radial-gradient(
-        circle at 50% 50%,
-        rgba(0, 247, 255, 0.1) 0%,
-        transparent 35%
-      );
-    z-index: 0;
-    animation: pulse 8s ease-in-out infinite;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      45deg,
+      rgba(15, 23, 42, 0.95) 0%,
+      rgba(0, 247, 255, 0.05) 50%,
+      rgba(15, 23, 42, 0.95) 100%
+    );
+    background-size: 400% 400%;
+    animation: ${gradientAnimation} 15s ease infinite;
+    z-index: -1;
   }
 
-  @keyframes pulse {
-    0% {
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      transform: translate(5%, 5%) scale(1.05);
-    }
-    50% {
-      transform: translate(-3%, 3%) scale(0.95);
-    }
-    75% {
-      transform: translate(-5%, -5%) scale(1.05);
-    }
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-  }
-
-  & > * {
-    position: relative;
-    z-index: 1;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      circle at center,
+      transparent 0%,
+      rgba(15, 23, 42, 0.95) 70%
+    );
+    z-index: -1;
   }
 `;
 
@@ -72,7 +70,7 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   max-width: 800px;
   margin: 0 auto 3rem auto;
   text-align: center;
@@ -82,54 +80,43 @@ const Description = styled.p`
 const ButtonGroup = styled.div`
   display: flex;
   gap: 1.5rem;
-  justify-content: center;
-  width: 100%;
-  max-width: 500px;
-
+  
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
+    width: 100%;
+    padding: 0 2rem;
   }
 `;
 
 const Button = styled(Link)`
-  text-decoration: none;
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   border-radius: 6px;
   font-weight: 500;
-  font-size: 1rem;
   transition: all 0.3s ease;
-  display: inline-block;
-  min-width: 160px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
   
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
-  }
-  
-  &:active {
-    transform: translateY(-1px);
-  }
-  
-  &:first-child {
+  &.primary {
     background: #00f7ff;
     color: #0f172a;
     
     &:hover {
-      background: #00e1e9;
+      background: #00d8e8;
+      transform: translateY(-2px);
     }
   }
   
-  &:last-child {
+  &.secondary {
     border: 1px solid #00f7ff;
     color: #00f7ff;
     
     &:hover {
       background: rgba(0, 247, 255, 0.1);
+      transform: translateY(-2px);
     }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
   }
 `;
 

@@ -8,21 +8,11 @@ const ProductSection = styled.section`
   padding: 6rem 2rem;
   background: rgba(15, 23, 42, 0.95);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 1;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      45deg,
-      transparent 0%,
-      rgba(0, 247, 255, 0.03) 50%,
-      transparent 100%
-    );
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
   }
 `;
 
@@ -32,6 +22,14 @@ const ProductGrid = styled.div`
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0;
+  }
 `;
 
 const ProductCard = styled.div`
@@ -42,8 +40,18 @@ const ProductCard = styled.div`
   padding: 2rem;
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding-top: 160px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 400px;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    padding-top: 140px;
+    margin: 0;
+  }
 
   &::before {
     content: '';
@@ -64,6 +72,12 @@ const ProductCard = styled.div`
     transform: translateY(-5px);
     border-color: #00f7ff;
     box-shadow: 0 8px 32px rgba(0, 247, 255, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    &:hover {
+      transform: translateY(-3px);
+    }
   }
 
   .icon {
@@ -109,6 +123,11 @@ const ProductThumbnail = styled.div<{ development?: boolean; language?: 'pt' | '
       background: rgba(0, 0, 0, 0.3);
       border-radius: 8px;
       border: 1px solid rgba(255, 204, 0, 0.3);
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
     }
   `}
   
@@ -129,11 +148,16 @@ const SectionTitle = styled.div`
   margin-bottom: 4rem;
   position: relative;
   z-index: 1;
+  padding: 0 1rem;
 
   h2 {
     color: #fff;
     font-size: 2.5rem;
     margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
   }
 
   p {
@@ -141,6 +165,10 @@ const SectionTitle = styled.div`
     font-size: 1.1rem;
     max-width: 600px;
     margin: 0 auto;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 `;
 

@@ -7,21 +7,11 @@ const AboutSection = styled.section`
   background: rgba(15, 23, 42, 0.95);
   position: relative;
   text-align: center;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 1;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      45deg,
-      transparent 0%,
-      rgba(0, 247, 255, 0.03) 50%,
-      transparent 100%
-    );
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
   }
 `;
 
@@ -33,9 +23,16 @@ const AboutCard = styled.div`
   padding: 3rem;
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   max-width: 1000px;
   margin: 0 auto;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+    width: auto;
+  }
 
   &::before {
     content: '';
@@ -57,6 +54,12 @@ const AboutCard = styled.div`
     border-color: #00f7ff;
     box-shadow: 0 8px 32px rgba(0, 247, 255, 0.1);
   }
+
+  @media (max-width: 768px) {
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
 `;
 
 const Title = styled.h2`
@@ -66,6 +69,10 @@ const Title = styled.h2`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const Description = styled.p`
@@ -74,6 +81,11 @@ const Description = styled.p`
   margin: 0 auto;
   line-height: 1.8;
   color: #888;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 `;
 
 export default function AboutUs() {

@@ -7,31 +7,30 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body {
-    margin: 0;
-    padding: 0;
+  html {
     width: 100%;
-    height: 100%;
+    overflow-x: hidden;
   }
 
   body {
-    display: block;
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: rgb(15, 23, 42);
     color: #f5f5f5;
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
   }
 
   #root {
-    min-height: 100%;
+    min-height: 100vh;
     width: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
 
   a {

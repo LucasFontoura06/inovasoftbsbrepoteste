@@ -5,16 +5,19 @@ import Products from "./componentes/Products";
 import Footer from "./componentes/Footer";
 import Navigation from "./componentes/Navigation";
 import { LanguageProvider } from './contexts/LanguageContext';
+import { GlobalStyle } from './style/GlobalStyle';
 
 function App() {
   return (
     <LanguageProvider>
       <Router>
+        <GlobalStyle />
         <div style={{ 
           background: '#0d1117',
-          margin: 0,
-          padding: 0,
-          minHeight: '100vh'
+          minHeight: '100vh',
+          width: '100%',
+          overflow: 'hidden',
+          position: 'relative'
         }}>
           <Navigation />
           <HeroSection />
