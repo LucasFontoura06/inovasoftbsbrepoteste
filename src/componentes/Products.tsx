@@ -3,11 +3,7 @@ import { FaSearch, FaClock, FaInfoCircle } from "react-icons/fa";
 
 const ProductSection = styled.section`
   padding: 6rem 2rem;
-  background: linear-gradient(
-    135deg,
-    rgba(15, 23, 42, 0.95) 0%,
-    rgba(30, 41, 59, 0.95) 100%
-  );
+  background: rgba(15, 23, 42, 0.95);
   position: relative;
   overflow: hidden;
 
@@ -18,13 +14,12 @@ const ProductSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      linear-gradient(
-        45deg,
-        transparent 0%,
-        rgba(0, 247, 255, 0.03) 50%,
-        transparent 100%
-      );
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      rgba(0, 247, 255, 0.03) 50%,
+      transparent 100%
+    );
   }
 `;
 

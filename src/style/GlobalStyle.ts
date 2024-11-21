@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: rgb(15, 23, 42);
     color: #f5f5f5;
     line-height: 1.6;
     overflow-x: hidden;

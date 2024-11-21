@@ -19,17 +19,36 @@ const Hero = styled.section`
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: -25%;
+    left: -25%;
+    right: -25%;
+    bottom: -25%;
     background: 
       radial-gradient(
         circle at 50% 50%,
         rgba(0, 247, 255, 0.1) 0%,
-        transparent 50%
+        transparent 35%
       );
     z-index: 0;
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(5%, 5%) scale(1.05);
+    }
+    50% {
+      transform: translate(-3%, 3%) scale(0.95);
+    }
+    75% {
+      transform: translate(-5%, -5%) scale(1.05);
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
   }
 
   & > * {
