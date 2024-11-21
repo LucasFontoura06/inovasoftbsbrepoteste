@@ -15,6 +15,35 @@ const backgroundAnimation = keyframes`
   }
 `;
 
+const pulseAnimation = keyframes`
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+`;
+
+const floatingBubbles = keyframes`
+  0% {
+    transform: translateY(100vh) translateX(-20%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20%);
+    opacity: 0;
+  }
+`;
+
 const Hero = styled.section`
   min-height: 100vh;
   display: flex;
@@ -36,10 +65,9 @@ const Hero = styled.section`
     background: radial-gradient(
       circle at center,
       rgba(0, 247, 255, 0.03) 0%,
-      rgba(15, 23, 41, 0) 50%
+      rgba(15, 23, 41, 0) 70%
     );
-    background-size: 200% 200%;
-    animation: ${backgroundAnimation} 25s ease infinite;
+    animation: ${pulseAnimation} 8s ease-in-out infinite;
     z-index: 0;
     pointer-events: none;
   }
@@ -51,10 +79,10 @@ const Hero = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(15, 23, 41, 0.9) 0%,
-      #0f1729 100%
+    background: radial-gradient(
+      circle at center,
+      transparent 0%,
+      #0f1729 70%
     );
     z-index: 0;
     pointer-events: none;
@@ -67,7 +95,7 @@ const Hero = styled.section`
 
   @media (max-width: 768px) {
     &::before {
-      animation-duration: 30s;
+      animation-duration: 10s;
     }
   }
 `;
@@ -133,12 +161,45 @@ const Button = styled(Link)`
   }
 `;
 
+const Bubble = styled.div`
+  position: absolute;
+  background: rgba(0, 247, 255, 0.25);
+  border-radius: 50%;
+  filter: blur(6px);
+  pointer-events: none;
+  
+  &:nth-child(1) { left: 5%; width: 45px; height: 45px; animation: ${floatingBubbles} 20s linear infinite; animation-delay: -15s; }
+  &:nth-child(2) { left: 15%; width: 35px; height: 35px; animation: ${floatingBubbles} 23s linear infinite; animation-delay: -8s; }
+  &:nth-child(3) { left: 25%; width: 50px; height: 50px; animation: ${floatingBubbles} 18s linear infinite; animation-delay: -12s; }
+  &:nth-child(4) { left: 35%; width: 30px; height: 30px; animation: ${floatingBubbles} 25s linear infinite; animation-delay: -5s; }
+  &:nth-child(5) { left: 45%; width: 40px; height: 40px; animation: ${floatingBubbles} 22s linear infinite; animation-delay: -18s; }
+  &:nth-child(6) { left: 55%; width: 48px; height: 48px; animation: ${floatingBubbles} 21s linear infinite; animation-delay: -10s; }
+  &:nth-child(7) { left: 65%; width: 32px; height: 32px; animation: ${floatingBubbles} 24s linear infinite; animation-delay: -7s; }
+  &:nth-child(8) { left: 75%; width: 38px; height: 38px; animation: ${floatingBubbles} 19s linear infinite; animation-delay: -16s; }
+  &:nth-child(9) { left: 85%; width: 42px; height: 42px; animation: ${floatingBubbles} 26s linear infinite; animation-delay: -13s; }
+  &:nth-child(10) { left: 95%; width: 36px; height: 36px; animation: ${floatingBubbles} 23s linear infinite; animation-delay: -9s; }
+  &:nth-child(11) { left: 10%; width: 44px; height: 44px; animation: ${floatingBubbles} 22s linear infinite; animation-delay: -14s; }
+  &:nth-child(12) { left: 20%; width: 34px; height: 34px; animation: ${floatingBubbles} 25s linear infinite; animation-delay: -11s; }
+`;
+
 export default function HeroSection() {
   const { language } = useLanguage();
   const t = translations[language];
 
   return (
     <Hero>
+      <Bubble />
+      <Bubble />
+      <Bubble />
+      <Bubble />
+      <Bubble />
+      <Bubble />
+      <Bubble />
+      <Bubble />
+      <Bubble />
+      <Bubble />
+      <Bubble />
+      <Bubble />
       <Title>InovaSoft BSB</Title>
       <Description>
         {t.hero.description}
