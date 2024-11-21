@@ -12,7 +12,7 @@ const ProductSection = styled.section`
   z-index: 1;
 
   @media (max-width: 768px) {
-    padding: 4rem 1rem;
+    padding: 6rem 1rem;
   }
 `;
 

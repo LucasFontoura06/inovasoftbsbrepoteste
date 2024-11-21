@@ -12,7 +12,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  width: 97%;
+  width: 100%;
   z-index: 1000;
   border-bottom: 1px solid rgba(0, 247, 255, 0.1);
 `;

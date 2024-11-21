@@ -3,7 +3,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../contexts/translation';
 
 const AboutSection = styled.section`
-  padding: 6rem 2rem;
+  padding: 20rem 2rem;
   background: rgba(15, 23, 42, 0.95);
   position: relative;
   text-align: center;
@@ -11,7 +11,7 @@ const AboutSection = styled.section`
   z-index: 1;
 
   @media (max-width: 768px) {
-    padding: 4rem 1rem;
+    padding: 17rem 1rem;
   }
 `;
 

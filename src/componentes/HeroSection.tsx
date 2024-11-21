@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../contexts/translation';
 
-const gradientAnimation = keyframes`
+const backgroundAnimation = keyframes`
   0% {
     background-position: 0% 50%;
   }
@@ -24,23 +24,24 @@ const Hero = styled.section`
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  background: #0f1729;
 
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      45deg,
-      rgba(15, 23, 42, 0.95) 0%,
-      rgba(0, 247, 255, 0.05) 50%,
-      rgba(15, 23, 42, 0.95) 100%
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: radial-gradient(
+      circle at center,
+      rgba(0, 247, 255, 0.03) 0%,
+      rgba(15, 23, 41, 0) 50%
     );
-    background-size: 400% 400%;
-    animation: ${gradientAnimation} 15s ease infinite;
-    z-index: -1;
+    background-size: 200% 200%;
+    animation: ${backgroundAnimation} 25s ease infinite;
+    z-index: 0;
+    pointer-events: none;
   }
 
   &::after {
@@ -50,12 +51,24 @@ const Hero = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(
-      circle at center,
-      transparent 0%,
-      rgba(15, 23, 42, 0.95) 70%
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 41, 0.9) 0%,
+      #0f1729 100%
     );
-    z-index: -1;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    &::before {
+      animation-duration: 30s;
+    }
   }
 `;
 
