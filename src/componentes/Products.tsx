@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { FaSearch, FaClock, FaInfoCircle, FaExternalLinkAlt } from "react-icons/fa";
+import { FaSearch, FaClock, FaExternalLinkAlt } from "react-icons/fa";
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../contexts/translation';
 import smartFindsImg from '../assets/smartfinds_home.jpg';
-import horaCertaImg from '../assets/hora_certa_home.jpg';
 
 const ProductSection = styled.section`
   padding: 6rem 2rem;
@@ -83,7 +84,7 @@ const ProductCard = styled.div`
   }
 `;
 
-const ProductThumbnail = styled.div<{ development?: boolean }>`
+const ProductThumbnail = styled.div<{ development?: boolean; language?: 'pt' | 'en' }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -99,7 +100,7 @@ const ProductThumbnail = styled.div<{ development?: boolean }>`
     justify-content: center;
     
     &::after {
-      content: '🚧 Em Desenvolvimento';
+      content: '${props.language === 'pt' ? '🚧 Em Desenvolvimento' : '🚧 Under Development'}';
       color: #ffcc00;
       font-size: 1.1rem;
       font-weight: 500;
@@ -182,11 +183,14 @@ const ProductLink = styled.a`
 `;
 
 export default function Products() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <ProductSection id="products">
       <SectionTitle>
-        <h2>Nossos Softwares</h2>
-        <p>Conheça algumas das soluções inovadoras que desenvolvemos para transformar a vida das pessoas.</p>
+        <h2>{t.products.title}</h2>
+        <p>{t.products.subtitle}</p>
       </SectionTitle>
       <ProductGrid>
         <ProductCard>
@@ -198,24 +202,24 @@ export default function Products() {
           </ProductThumbnail>
           <FaSearch className="icon" />
           <h3>SmartFinds</h3>
-          <p>Busca inteligente para suas necessidades</p>
+          <p>{t.products.smartFinds.description}</p>
           <ProductLink href="https://smartfinds.web.app/" target="_blank">
-            Acessar <FaExternalLinkAlt size={12} />
+            {t.products.smartFinds.action} <FaExternalLinkAlt size={12} />
           </ProductLink>
-          <StatusBadge active>Ativo</StatusBadge>
+          <StatusBadge active>{t.products.smartFinds.status}</StatusBadge>
         </ProductCard>
         
         <ProductCard>
-          <ProductThumbnail development>
+          <ProductThumbnail development language={language}>
             {/* Não precisa da tag img quando development={true} */}
           </ProductThumbnail>
           <FaClock className="icon" />
           <h3>Hora Certa</h3>
-          <p>Gestão de tempo eficiente</p>
+          <p>{t.products.horaCerta.description}</p>
           <ProductLink className="disabled">
-            Em desenvolvimento <FaExternalLinkAlt size={12} />
+            {t.products.horaCerta.action} <FaExternalLinkAlt size={12} />
           </ProductLink>
-          <StatusBadge>Em breve</StatusBadge>
+          <StatusBadge>{t.products.horaCerta.status}</StatusBadge>
         </ProductCard>
       </ProductGrid>
     </ProductSection>

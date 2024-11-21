@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Nav = styled.nav`
   background: rgba(15, 23, 42, 0.95);
@@ -112,6 +113,22 @@ const MenuButton = styled.button`
   }
 `;
 
+const LanguageButton = styled.button`
+  background: transparent;
+  border: none;
+  color: #00f7ff;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+  
+  &:hover {
+    color: #fff;
+    transform: translateY(-2px);
+  }
+`;
+
 const scrollToSection = (elementId: string) => {
   const element = document.getElementById(elementId);
   if (element) {
@@ -121,6 +138,7 @@ const scrollToSection = (elementId: string) => {
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
 
   return (
     <Nav>
@@ -130,16 +148,21 @@ export default function Navigation() {
         <NavItem to="/" onClick={(e) => {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}>Home</NavItem>
+        }}>{language === 'pt' ? 'Início' : 'Home'}</NavItem>
         <NavItem to="/" onClick={(e) => {
           e.preventDefault();
           scrollToSection('about');
-        }}>About</NavItem>
+        }}>{language === 'pt' ? 'Sobre' : 'About'}</NavItem>
         <NavItem to="/" onClick={(e) => {
           e.preventDefault();
           scrollToSection('products');
-        }}>Products</NavItem>
-        <ContactButton to="/contact">Contact</ContactButton>
+        }}>{language === 'pt' ? 'Produtos' : 'Products'}</NavItem>
+        <ContactButton to="/contact">
+          {language === 'pt' ? 'Contato' : 'Contact'}
+        </ContactButton>
+        <LanguageButton onClick={toggleLanguage}>
+          {language === 'pt' ? '🇺🇸 EN' : '🇧🇷 PT'}
+        </LanguageButton>
       </NavLinks>
 
       <MenuButton onClick={() => setIsOpen(!isOpen)}>
@@ -151,18 +174,23 @@ export default function Navigation() {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
           setIsOpen(false);
-        }}>Home</NavItem>
+        }}>{language === 'pt' ? 'Início' : 'Home'}</NavItem>
         <NavItem to="/" onClick={(e) => {
           e.preventDefault();
           scrollToSection('about');
           setIsOpen(false);
-        }}>About</NavItem>
+        }}>{language === 'pt' ? 'Sobre' : 'About'}</NavItem>
         <NavItem to="/" onClick={(e) => {
           e.preventDefault();
           scrollToSection('products');
           setIsOpen(false);
-        }}>Products</NavItem>
-        <ContactButton to="/contact">Contact</ContactButton>
+        }}>{language === 'pt' ? 'Produtos' : 'Products'}</NavItem>
+        <ContactButton to="/contact">
+          {language === 'pt' ? 'Contato' : 'Contact'}
+        </ContactButton>
+        <LanguageButton onClick={toggleLanguage}>
+          {language === 'pt' ? '🇺🇸 EN' : '🇧🇷 PT'}
+        </LanguageButton>
       </MobileNavLinks>
     </Nav>
   );

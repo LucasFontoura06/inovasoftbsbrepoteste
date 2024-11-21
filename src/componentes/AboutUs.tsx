@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../contexts/translation';
 
 const AboutSection = styled.section`
   padding: 6rem 2rem;
@@ -75,16 +77,15 @@ const Description = styled.p`
 `;
 
 export default function AboutUs() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <AboutSection id="about">
       <AboutCard>
-        <Title>Quem Somos</Title>
+        <Title>{t.about.title}</Title>
         <Description>
-          Somos uma startup de tecnologia sediada em Brasília, apaixonada por
-          criar ferramentas que fazem a diferença. Acreditamos que a inovação é a
-          chave para transformar a gestão empresarial e simplificar a vida das
-          pessoas. Nossa missão é desenvolver soluções tecnológicas inteligentes
-          que impulsionam o crescimento e a eficiência dos nossos clientes.
+          {t.about.description}
         </Description>
       </AboutCard>
     </AboutSection>

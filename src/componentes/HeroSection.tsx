@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../contexts/translation';
 
 const Hero = styled.section`
   display: flex;
@@ -132,15 +134,18 @@ const Button = styled(Link)`
 `;
 
 export default function HeroSection() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <Hero>
       <Title>InovaSoft BSB</Title>
       <Description>
-        Transformando o futuro através de soluções tecnológicas inteligentes e inovadoras
+        {t.hero.description}
       </Description>
       <ButtonGroup>
-        <Button to="/demo" className="primary">Ver Demo</Button>
-        <Button to="/contact" className="secondary">Fale Conosco</Button>
+        <Button to="/demo" className="primary">{t.hero.demo}</Button>
+        <Button to="/contact" className="secondary">{t.hero.contact}</Button>
       </ButtonGroup>
     </Hero>
   );
