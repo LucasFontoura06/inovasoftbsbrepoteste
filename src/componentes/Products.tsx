@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { FaSearch, FaClock, FaInfoCircle, FaExternalLinkAlt } from "react-icons/fa";
+import smartFindsImg from '../assets/smartfinds_home.jpg';
+import horaCertaImg from '../assets/hora_certa_home.jpg';
 
 const ProductSection = styled.section`
   padding: 6rem 2rem;
@@ -40,6 +42,7 @@ const ProductCard = styled.div`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  padding-top: 160px;
 
   &::before {
     content: '';
@@ -80,6 +83,46 @@ const ProductCard = styled.div`
   }
 `;
 
+const ProductThumbnail = styled.div<{ development?: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  
+  ${props => props.development && `
+    background: linear-gradient(45deg, #1a1a2e, #16213e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &::after {
+      content: '🚧 Em Desenvolvimento';
+      color: #ffcc00;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 204, 0, 0.3);
+    }
+  `}
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+`;
+
 const SectionTitle = styled.div`
   text-align: center;
   margin-bottom: 4rem;
@@ -102,7 +145,7 @@ const SectionTitle = styled.div`
 
 const StatusBadge = styled.span<{ active?: boolean }>`
   position: absolute;
-  top: 1rem;
+  bottom: 1rem;
   right: 1rem;
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
@@ -147,34 +190,33 @@ export default function Products() {
       </SectionTitle>
       <ProductGrid>
         <ProductCard>
-          <StatusBadge active>Ativo</StatusBadge>
+          <ProductThumbnail>
+            <img 
+              src={smartFindsImg} 
+              alt="SmartFinds Preview"
+            />
+          </ProductThumbnail>
           <FaSearch className="icon" />
           <h3>SmartFinds</h3>
           <p>Busca inteligente para suas necessidades</p>
-          <ProductLink href="https://smartfinds.com.br" target="_blank">
+          <ProductLink href="https://smartfinds.web.app/" target="_blank">
             Acessar <FaExternalLinkAlt size={12} />
           </ProductLink>
+          <StatusBadge active>Ativo</StatusBadge>
         </ProductCard>
         
         <ProductCard>
-          <StatusBadge>Em breve</StatusBadge>
+          <ProductThumbnail development>
+            {/* Não precisa da tag img quando development={true} */}
+          </ProductThumbnail>
           <FaClock className="icon" />
           <h3>Hora Certa</h3>
           <p>Gestão de tempo eficiente</p>
           <ProductLink className="disabled">
             Em desenvolvimento <FaExternalLinkAlt size={12} />
           </ProductLink>
+          <StatusBadge>Em breve</StatusBadge>
         </ProductCard>
-        
-        {/* <ProductCard>
-          <StatusBadge active>Ativo</StatusBadge>
-          <FaInfoCircle className="icon" />
-          <h3>About Us</h3>
-          <p>Conheça nossa história</p>
-          <ProductLink href="https://about.empresa.com.br" target="_blank">
-            Acessar <FaExternalLinkAlt size={12} />
-          </ProductLink>
-        </ProductCard> */}
       </ProductGrid>
     </ProductSection>
   );
