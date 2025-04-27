@@ -29,31 +29,33 @@ const ProductSection = styled.section`
 
 const ProductGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  padding: 0 1rem;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 `;
 
 const ProductCard = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.4s ease;
+  padding: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 
   &::before {
     content: '';
@@ -73,9 +75,10 @@ const ProductCard = styled.div`
   }
 
   &:hover {
-    transform: translateY(-8px);
-    border-color: var(--metallic-light);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.08);
 
     &::before {
       transform: translateX(50%);
@@ -88,25 +91,31 @@ const ProductThumbnail = styled.div<{ development?: boolean; language?: 'pt' | '
   aspect-ratio: 16/9;
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   
   ${props => props.development && `
-    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    background: linear-gradient(135deg, 
+      rgba(0, 212, 160, 0.2) 0%,
+      rgba(0, 166, 126, 0.2) 50%,
+      rgba(0, 99, 77, 0.2) 100%
+    );
     display: flex;
     align-items: center;
     justify-content: center;
     
     &::after {
       content: '${props.language === 'pt' ? '🚧 Em Desenvolvimento' : '🚧 Under Development'}';
-      color: #FFFFFF;
-      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
       font-weight: 500;
       text-align: center;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 8px;
+      padding: 0.8rem 1.5rem;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
       backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
   `}
   
@@ -114,7 +123,7 @@ const ProductThumbnail = styled.div<{ development?: boolean; language?: 'pt' | '
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   &:hover img {
@@ -156,65 +165,46 @@ const ProductContent = styled.div`
 `;
 
 const ProductTitle = styled.h3`
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #FFFFFF 0%, var(--metallic-light) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  letter-spacing: -0.01em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const ProductDescription = styled.p`
-  color: var(--metallic-light);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
   flex: 1;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const ProductLink = styled.a`
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
+  gap: 0.6rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 12px;
-  background: var(--gradient-metallic);
+  background: rgba(255, 255, 255, 0.1);
   color: #FFFFFF;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   font-weight: 500;
+  font-size: 0.95rem;
   justify-content: center;
   margin-top: auto;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.2) 50%,
-      transparent 100%
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-  }
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   &:hover {
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-
-    &::before {
-      transform: translateX(50%);
-    }
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
 
   &.disabled {
@@ -222,21 +212,34 @@ const ProductLink = styled.a`
     cursor: not-allowed;
     pointer-events: none;
   }
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(4px);
+  }
 `;
 
 const StatusBadge = styled.span<{ active?: boolean }>`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  padding: 0.5rem 1.2rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  background: ${props => props.active ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 200, 0, 0.2)'};
-  color: ${props => props.active ? '#FFFFFF' : '#FFD700'};
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: ${props => props.active ? 
+    'rgba(0, 212, 160, 0.1)' : 
+    'rgba(255, 200, 0, 0.1)'};
+  color: ${props => props.active ? 
+    'rgba(0, 212, 160, 0.9)' : 
+    'rgba(255, 200, 0, 0.9)'};
   backdrop-filter: blur(4px);
-  border: 1px solid ${props => props.active ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 200, 0, 0.3)'};
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid ${props => props.active ? 
+    'rgba(0, 212, 160, 0.2)' : 
+    'rgba(255, 200, 0, 0.2)'};
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  margin-left: auto;
 `;
 
 export default function Products() {
@@ -258,25 +261,29 @@ export default function Products() {
             />
           </ProductThumbnail>
           <ProductContent>
-            <ProductTitle>SmartFinds</ProductTitle>
+            <ProductTitle>
+              SmartFinds
+              <StatusBadge active>{t.products.smartFinds.status}</StatusBadge>
+            </ProductTitle>
             <ProductDescription>{t.products.smartFinds.description}</ProductDescription>
             <ProductLink href="https://smartfinds.web.app/" target="_blank">
               {t.products.smartFinds.action} <FaExternalLinkAlt size={12} />
             </ProductLink>
           </ProductContent>
-          <StatusBadge active>{t.products.smartFinds.status}</StatusBadge>
         </ProductCard>
         
         <ProductCard>
           <ProductThumbnail development language={language} />
           <ProductContent>
-            <ProductTitle>Hora Certa</ProductTitle>
+            <ProductTitle>
+              Hora Certa
+              <StatusBadge>{t.products.horaCerta.status}</StatusBadge>
+            </ProductTitle>
             <ProductDescription>{t.products.horaCerta.description}</ProductDescription>
             <ProductLink className="disabled">
               {t.products.horaCerta.action} <FaExternalLinkAlt size={12} />
             </ProductLink>
           </ProductContent>
-          <StatusBadge>{t.products.horaCerta.status}</StatusBadge>
         </ProductCard>
       </ProductGrid>
     </ProductSection>
