@@ -5,30 +5,33 @@ import { useState } from "react";
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Nav = styled.nav`
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(0, 99, 77, 0.8);
   backdrop-filter: blur(10px);
-  padding: 1rem 2rem;
+  padding: 1.2rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   width: 100%;
   z-index: 1000;
-  border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 `;
 
 const Logo = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #fff 0%, #00f7ff 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--metallic-light) 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-right: 1rem;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.02em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 const NavLinks = styled.div`
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
   margin-left: auto;
   
@@ -42,14 +45,15 @@ const MobileNavContainer = styled(motion.div)`
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(15, 23, 42, 1.0);
+  background: rgba(0, 99, 77, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 247, 255, 0.1);
-  padding: 2rem;
+  padding: 1.5rem;
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 `;
 
 const MobileNavRow = styled.div`
@@ -81,73 +85,108 @@ const MobileContactButton = styled(motion.div)`
 `;
 
 const NavItem = styled(Link)`
-  color: #f5f5f5;
+  color: var(--metallic-light);
   font-size: 1rem;
   font-weight: 500;
   transition: all 0.3s ease;
   text-decoration: none;
+  position: relative;
+  padding: 0.5rem 0;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-metallic);
+    transition: width 0.3s ease;
+  }
   
   &:hover {
-    color: #00f7ff;
-    transform: translateY(-2px);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+    
+    &::after {
+      width: 100%;
+    }
   }
 `;
 
 const ContactButton = styled(Link)`
-  background: transparent;
-  border: 1px solid #00f7ff;
-  color: #00f7ff;
-  padding: 0.8rem 1.5rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  background: var(--gradient-metallic);
+  color: #FFFFFF;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
   font-weight: 500;
   transition: all 0.3s ease;
   text-decoration: none;
-  white-space: nowrap;
-  display: inline-block;
-  text-align: center;
+  position: relative;
+  overflow: hidden;
   
-  @media (max-width: 768px) {
-    width: 100%;
-    margin: 0.5rem 0;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
   }
   
   &:hover {
-    background: rgba(0, 247, 255, 0.1);
     transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    
+    &::before {
+      transform: translateX(50%);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
   }
 `;
 
 const LanguageButton = styled.button`
   background: transparent;
   border: none;
-  color: #00f7ff;
-  padding: 0.8rem 1.5rem;
-  font-size: 0.9rem;
+  color: var(--metallic-light);
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  
+  &:hover {
+    color: #FFFFFF;
+    transform: translateY(-1px);
+  }
   
   @media (max-width: 768px) {
     width: 100%;
     text-align: left;
     padding: 0.8rem 0;
   }
-  
-  &:hover {
-    color: #fff;
-    transform: translateY(-2px);
-  }
 `;
 
 const MenuButton = styled.button`
   display: none;
-  background: none;
-  border: 2px solid #00f7ff;
-  color: #00f7ff;
+  background: transparent;
+  border: none;
+  color: var(--metallic-light);
   font-size: 1.5rem;
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: 0.5rem;
   transition: all 0.3s ease;
   
   @media (max-width: 768px) {
@@ -155,7 +194,7 @@ const MenuButton = styled.button`
   }
   
   &:hover {
-    background: rgba(0, 247, 255, 0.1);
+    color: #FFFFFF;
   }
 `;
 

@@ -2,8 +2,20 @@ import styled from "styled-components";
 
 const AboutSection = styled.section`
   padding: 2rem;
-  background-color: #fff;
+  background-color: var(--primary-color);
+  color: var(--text-color);
   text-align: center;
+  
+  h2 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
 `;
 
 export default function AboutUs() {

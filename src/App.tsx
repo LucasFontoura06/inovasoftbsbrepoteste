@@ -7,13 +7,14 @@ import Products from "./componentes/Products";
 import AboutUs from "./componentes/AboutUs";
 import Footer from "./componentes/Footer";
 
+// Veridian - A project focused on growth, prosperity, and renewal
 function App() {
   return (
     <LanguageProvider>
       <Router>
         <GlobalStyle />
         <div style={{ 
-          background: '#0d1117',
+          backgroundColor: 'var(--primary-color)',
           minHeight: '100vh',
           width: '100%',
           overflow: 'hidden',
