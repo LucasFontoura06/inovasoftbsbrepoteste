@@ -20,15 +20,22 @@ const shimmer = keyframes`
 `;
 
 const ProductSection = styled.section`
+  min-height: 100vh;
+  width: 100%;
   padding: 8rem 2rem;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(
     rgba(0, 99, 77, 0.3),
     rgba(0, 99, 77, 0.3)
-  ), url('/imagem_esme2.jpg') center/cover no-repeat;
+  ), url('/imagem_esme2.jpg') center/cover fixed no-repeat;
 
   @media (max-width: 768px) {
+    min-height: 100vh;
     padding: 6rem 1rem;
   }
 `;
@@ -37,6 +44,7 @@ const ProductGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;

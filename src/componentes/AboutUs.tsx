@@ -4,15 +4,20 @@ import { translations } from '../contexts/translation';
 import { keyframes } from 'styled-components';
 
 const AboutSection = styled.section`
+  min-height: 100vh;
+  width: 100%;
   padding: 8rem 2rem;
-  margin-top: -100px;
+  margin: 0;
   position: relative;
   text-align: center;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(
     rgba(0, 99, 77, 0.3),
     rgba(0, 99, 77, 0.3)
-  ), url('/imagem_esme3.jpg') center/cover no-repeat;
+  ), url('/imagem_esme3.jpg') center/cover fixed no-repeat;
 
   &::before {
     content: '';
@@ -44,8 +49,9 @@ const AboutSection = styled.section`
   }
 
   @media (max-width: 768px) {
+    min-height: 100vh;
     padding: 6rem 1rem;
-    margin-top: -50px;
+    margin: 0;
 
     &::before, &::after {
       height: 100px;
