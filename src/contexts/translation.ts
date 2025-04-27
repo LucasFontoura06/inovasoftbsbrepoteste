@@ -18,8 +18,8 @@ export const translations = {
     products: {
       title: 'Nossos Softwares',
       subtitle: 'Conheça algumas das soluções inovadoras que desenvolvemos para transformar a vida das pessoas',
-      smartFinds: {
-        description: 'Busca inteligente para suas necessidades',
+      balancium: {
+        description: 'Organize suas receitas e despesas de forma inteligente',
         status: 'Ativo',
         action: 'Acessar'
       },
@@ -50,8 +50,8 @@ export const translations = {
     products: {
       title: 'Our Software',
       subtitle: 'Discover some of the innovative solutions we\'ve developed to transform people\'s lives',
-      smartFinds: {
-        description: 'Intelligent search for your needs',
+      balancium: {
+        description: 'Organize your income and expenses intelligently',
         status: 'Active',
         action: 'Access'
       },

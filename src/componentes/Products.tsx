@@ -8,8 +8,14 @@ const shimmer = keyframes`
   0% {
     transform: translateX(-100%) rotate(45deg);
   }
-  100% {
+  50% {
     transform: translateX(100%) rotate(45deg);
+  }
+  50.1% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(-100%) rotate(45deg);
   }
 `;
 
@@ -70,8 +76,7 @@ const ProductCard = styled.div`
       rgba(255, 255, 255, 0.2) 50%,
       transparent 100%
     );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
+    animation: ${shimmer} 3s infinite ease-in-out;
   }
 
   &:hover {
@@ -79,10 +84,6 @@ const ProductCard = styled.div`
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     background: rgba(255, 255, 255, 0.08);
-
-    &::before {
-      transform: translateX(50%);
-    }
   }
 `;
 
@@ -262,12 +263,12 @@ export default function Products() {
           </ProductThumbnail>
           <ProductContent>
             <ProductTitle>
-              SmartFinds
-              <StatusBadge active>{t.products.smartFinds.status}</StatusBadge>
+              Balancium
+              <StatusBadge active>{t.products.balancium.status}</StatusBadge>
             </ProductTitle>
-            <ProductDescription>{t.products.smartFinds.description}</ProductDescription>
-            <ProductLink href="https://smartfinds.web.app/" target="_blank">
-              {t.products.smartFinds.action} <FaExternalLinkAlt size={12} />
+            <ProductDescription>{t.products.balancium.description}</ProductDescription>
+            <ProductLink href="https://balanciumapp.web.app/" target="_blank">
+              {t.products.balancium.action} <FaExternalLinkAlt size={12} />
             </ProductLink>
           </ProductContent>
         </ProductCard>
