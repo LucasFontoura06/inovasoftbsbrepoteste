@@ -7,7 +7,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 const Nav = styled.nav`
   background: rgba(0, 99, 77, 0.8);
   backdrop-filter: blur(10px);
-  padding: 1.2rem 2rem;
+  padding: 0.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +19,7 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled.div`
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 700;
   background: linear-gradient(135deg, #FFFFFF 0%, var(--metallic-light) 100%);
   -webkit-background-clip: text;
@@ -86,12 +86,12 @@ const MobileContactButton = styled(motion.div)`
 
 const NavItem = styled(Link)`
   color: var(--metallic-light);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   transition: all 0.3s ease;
   text-decoration: none;
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0.3rem 0;
   
   &::after {
     content: '';
@@ -115,40 +115,31 @@ const NavItem = styled(Link)`
 `;
 
 const ContactButton = styled(Link)`
-  background: var(--gradient-metallic);
-  color: #FFFFFF;
-  padding: 0.8rem 1.8rem;
-  border-radius: 8px;
-  font-size: 1rem;
+  color: var(--metallic-light);
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
   font-weight: 500;
   transition: all 0.3s ease;
   text-decoration: none;
   position: relative;
-  overflow: hidden;
   
-  &::before {
+  &::after {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.2) 50%,
-      transparent 100%
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-metallic);
+    transition: width 0.3s ease;
   }
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    transform: translateY(-1px);
     
-    &::before {
-      transform: translateX(50%);
+    &::after {
+      width: 100%;
     }
   }
   
@@ -162,8 +153,8 @@ const LanguageButton = styled.button`
   background: transparent;
   border: none;
   color: var(--metallic-light);
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s ease;
   
@@ -236,7 +227,7 @@ export default function Navigation() {
 
   return (
     <Nav>
-      <Logo>InovaSoft BSB</Logo>
+      <Logo>Veridian</Logo>
       
       <NavLinks>
         <NavItem to="/" onClick={(e) => {
