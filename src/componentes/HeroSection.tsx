@@ -227,7 +227,6 @@ export default function HeroSection() {
           {t.hero.description}
         </Description>
         <ButtonGroup>
-          <Button to="/demo" className="primary">{t.hero.demo}</Button>
           <Button to="/contact" className="secondary">{t.hero.contact}</Button>
         </ButtonGroup>
       </Content>

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Nav = styled.nav`
-  background: rgba(0, 99, 77, 0.8);
+  background: rgba(0, 150, 110, 0.85);
   backdrop-filter: blur(10px);
   padding: 0.5rem 2rem;
   display: flex;
@@ -18,6 +18,24 @@ const Nav = styled.nav`
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 `;
 
+const LogoRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+`;
+
+const LogoImg = styled.img`
+  height: 2.1rem;
+  width: 2.1rem;
+  min-width: 1.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+  @media (max-width: 600px) {
+    height: 1.4rem;
+    width: 1.4rem;
+  }
+`;
+
 const Logo = styled.div`
   font-size: 1.4rem;
   font-weight: 700;
@@ -27,6 +45,8 @@ const Logo = styled.div`
   color: transparent;
   letter-spacing: -0.02em;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
 `;
 
 const NavLinks = styled.div`
@@ -227,7 +247,10 @@ export default function Navigation() {
 
   return (
     <Nav>
-      <Logo>Veridian</Logo>
+      <LogoRow>
+        <LogoImg src="/logoVeridian.png" alt="Logo Veridian" />
+        <Logo>Veridian</Logo>
+      </LogoRow>
       
       <NavLinks>
         <NavItem to="/" onClick={(e) => {

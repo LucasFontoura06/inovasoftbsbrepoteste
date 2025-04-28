@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { FaSearch, FaClock, FaExternalLinkAlt } from "react-icons/fa";
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../contexts/translation';
-import smartFindsImg from '../assets/smartfinds_home.jpg';
+import balanciumImg from '../assets/balancium_img.jpg';
 
 const shimmer = keyframes`
   0% {
@@ -265,8 +265,8 @@ export default function Products() {
         <ProductCard>
           <ProductThumbnail>
             <img 
-              src={smartFindsImg} 
-              alt="SmartFinds Preview"
+              src={balanciumImg} 
+              alt="Balancium Preview"
             />
           </ProductThumbnail>
           <ProductContent>
